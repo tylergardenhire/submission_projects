@@ -1,0 +1,33 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.7</VERSION>
+ <DEVICE>"ATmega328P"</DEVICE>
+ <WORKING_DIR>A:\Users\Tyler\School\Spring 2019\cpe301\project2a\project2b\2B_assembly\2B_assembly\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>A:\Users\Tyler\School\Spring 2019\cpe301\project2a\project2b\2B_assembly\2B_assembly\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\avrasm\inc\m328pdef.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>A:\Users\Tyler\School\Spring 2019\cpe301\project2a\project2b\2B_assembly\2B_assembly\Debug\2B_assembly.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>2B_assembly.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>2B_assembly.map</FILE>
+  <FILE>2B_assembly.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <start><FILE>A:\Users\Tyler\School\Spring 2019\cpe301\project2a\project2b\2B_assembly\2B_assembly\main.asm</FILE><LINE>14</LINE></start>
+  <ex0_isr><FILE>A:\Users\Tyler\School\Spring 2019\cpe301\project2a\project2b\2B_assembly\2B_assembly\main.asm</FILE><LINE>51</LINE></ex0_isr>
+  <off><FILE>A:\Users\Tyler\School\Spring 2019\cpe301\project2a\project2b\2B_assembly\2B_assembly\main.asm</FILE><LINE>28</LINE></off>
+  <delayon><FILE>A:\Users\Tyler\School\Spring 2019\cpe301\project2a\project2b\2B_assembly\2B_assembly\main.asm</FILE><LINE>33</LINE></delayon>
+  <delayon1><FILE>A:\Users\Tyler\School\Spring 2019\cpe301\project2a\project2b\2B_assembly\2B_assembly\main.asm</FILE><LINE>35</LINE></delayon1>
+  <delayon2><FILE>A:\Users\Tyler\School\Spring 2019\cpe301\project2a\project2b\2B_assembly\2B_assembly\main.asm</FILE><LINE>37</LINE></delayon2>
+  <delayon3><FILE>A:\Users\Tyler\School\Spring 2019\cpe301\project2a\project2b\2B_assembly\2B_assembly\main.asm</FILE><LINE>39</LINE></delayon3>
+ </LABELS>
+</ASSEMBLER_INFO>
