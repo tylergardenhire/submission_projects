@@ -1,0 +1,584 @@
+
+midterm1.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         000000ae  00800100  00000350  000003e4  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         00000350  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          00000006  008001ae  008001ae  00000492  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000492  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000004c4  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000040  00000000  00000000  00000504  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00000bcc  00000000  00000000  00000544  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 000007be  00000000  00000000  00001110  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   000003f4  00000000  00000000  000018ce  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000000cc  00000000  00000000  00001cc4  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000425  00000000  00000000  00001d90  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000335  00000000  00000000  000021b5  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000030  00000000  00000000  000024ea  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   8:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  10:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  14:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  18:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  1c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  20:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  24:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  28:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  2c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  30:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  34:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  38:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  3c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  40:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  44:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  48:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  4c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  50:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  54:	0c 94 70 00 	jmp	0xe0	; 0xe0 <__vector_21>
+  58:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  5c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  60:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  64:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_copy_data>:
+  74:	11 e0       	ldi	r17, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	e0 e5       	ldi	r30, 0x50	; 80
+  7c:	f3 e0       	ldi	r31, 0x03	; 3
+  7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+  80:	05 90       	lpm	r0, Z+
+  82:	0d 92       	st	X+, r0
+  84:	ae 3a       	cpi	r26, 0xAE	; 174
+  86:	b1 07       	cpc	r27, r17
+  88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+
+0000008a <__do_clear_bss>:
+  8a:	21 e0       	ldi	r18, 0x01	; 1
+  8c:	ae ea       	ldi	r26, 0xAE	; 174
+  8e:	b1 e0       	ldi	r27, 0x01	; 1
+  90:	01 c0       	rjmp	.+2      	; 0x94 <.do_clear_bss_start>
+
+00000092 <.do_clear_bss_loop>:
+  92:	1d 92       	st	X+, r1
+
+00000094 <.do_clear_bss_start>:
+  94:	a4 3b       	cpi	r26, 0xB4	; 180
+  96:	b2 07       	cpc	r27, r18
+  98:	e1 f7       	brne	.-8      	; 0x92 <.do_clear_bss_loop>
+  9a:	0e 94 16 01 	call	0x22c	; 0x22c <main>
+  9e:	0c 94 a6 01 	jmp	0x34c	; 0x34c <_exit>
+
+000000a2 <__bad_interrupt>:
+  a2:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000a6 <ADC_init>:
+}
+
+void ADC_init (void)
+{
+	//ADC Multiplexer Selection Register
+	ADMUX = (1 << REFS0) |				// Voltage reference during conversion, "AVcc with external capacitor at AREF pin"
+  a6:	80 e6       	ldi	r24, 0x60	; 96
+  a8:	80 93 7c 00 	sts	0x007C, r24	; 0x80007c <__TEXT_REGION_LENGTH__+0x7e007c>
+	(1 << ADLAR);						// Left adjust ADC conversion result in ADC Data Register
+	
+	//ADC Control and Status Register A
+	ADCSRA = (1 << ADEN) |		// ADC enable
+  ac:	8f ee       	ldi	r24, 0xEF	; 239
+  ae:	80 93 7a 00 	sts	0x007A, r24	; 0x80007a <__TEXT_REGION_LENGTH__+0x7e007a>
+  b2:	08 95       	ret
+
+000000b4 <UART_init>:
+}
+
+void UART_init (void)
+{
+	//USART Baud Rate Registers
+	UBRR0H = UBRREQ >> 8;		 // Shifts right to store upper 8 bits
+  b4:	10 92 c5 00 	sts	0x00C5, r1	; 0x8000c5 <__TEXT_REGION_LENGTH__+0x7e00c5>
+	UBRR0L = UBRREQ;			 // Store lower 8 bits
+  b8:	80 e1       	ldi	r24, 0x10	; 16
+  ba:	80 93 c4 00 	sts	0x00C4, r24	; 0x8000c4 <__TEXT_REGION_LENGTH__+0x7e00c4>
+
+	//USART Control and Status Register (A/B/C)
+	UCSR0A |= (1 << U2X0);		 // Doubles USART transmission speed
+  be:	e0 ec       	ldi	r30, 0xC0	; 192
+  c0:	f0 e0       	ldi	r31, 0x00	; 0
+  c2:	80 81       	ld	r24, Z
+  c4:	82 60       	ori	r24, 0x02	; 2
+  c6:	80 83       	st	Z, r24
+	UCSR0B |= (1 << TXEN0);		 // Enables USART transmitter
+  c8:	e1 ec       	ldi	r30, 0xC1	; 193
+  ca:	f0 e0       	ldi	r31, 0x00	; 0
+  cc:	80 81       	ld	r24, Z
+  ce:	88 60       	ori	r24, 0x08	; 8
+  d0:	80 83       	st	Z, r24
+	UCSR0C |= (1 << UCSZ01) |
+  d2:	e2 ec       	ldi	r30, 0xC2	; 194
+  d4:	f0 e0       	ldi	r31, 0x00	; 0
+  d6:	80 81       	ld	r24, Z
+  d8:	86 60       	ori	r24, 0x06	; 6
+  da:	80 83       	st	Z, r24
+	(1 << UCSZ00);	 // 8-bit character size
+	
+	sei();						 // Enable global interrupt
+  dc:	78 94       	sei
+  de:	08 95       	ret
+
+000000e0 <__vector_21>:
+}
+
+ISR(ADC_vect)
+{
+  e0:	1f 92       	push	r1
+  e2:	0f 92       	push	r0
+  e4:	0f b6       	in	r0, 0x3f	; 63
+  e6:	0f 92       	push	r0
+  e8:	11 24       	eor	r1, r1
+  ea:	2f 93       	push	r18
+  ec:	3f 93       	push	r19
+  ee:	4f 93       	push	r20
+  f0:	5f 93       	push	r21
+  f2:	6f 93       	push	r22
+  f4:	7f 93       	push	r23
+  f6:	8f 93       	push	r24
+  f8:	9f 93       	push	r25
+  fa:	af 93       	push	r26
+  fc:	bf 93       	push	r27
+  fe:	ef 93       	push	r30
+ 100:	ff 93       	push	r31
+ 102:	cf 93       	push	r28
+ 104:	df 93       	push	r29
+ 106:	cd b7       	in	r28, 0x3d	; 61
+ 108:	de b7       	in	r29, 0x3e	; 62
+ 10a:	27 97       	sbiw	r28, 0x07	; 7
+ 10c:	de bf       	out	0x3e, r29	; 62
+ 10e:	cd bf       	out	0x3d, r28	; 61
+	volatile unsigned int j=0;
+ 110:	1a 82       	std	Y+2, r1	; 0x02
+ 112:	19 82       	std	Y+1, r1	; 0x01
+	char temp[5];
+	
+	ADCvalue = (ADCH << 1);		 // Shifts the value left to one place
+ 114:	80 91 79 00 	lds	r24, 0x0079	; 0x800079 <__TEXT_REGION_LENGTH__+0x7e0079>
+ 118:	88 0f       	add	r24, r24
+ 11a:	80 93 b3 01 	sts	0x01B3, r24	; 0x8001b3 <ADCvalue>
+	
+	itoa(ADCvalue, temp, 10);	 // Converts integers to string
+ 11e:	80 91 b3 01 	lds	r24, 0x01B3	; 0x8001b3 <ADCvalue>
+    } else if (__radix < 2 || __radix > 36) {
+	*__s = 0;
+	return __s;
+    } else {
+	extern char *__itoa_ncheck (int, char *, unsigned char);
+	return __itoa_ncheck (__val, __s, __radix);
+ 122:	4a e0       	ldi	r20, 0x0A	; 10
+ 124:	be 01       	movw	r22, r28
+ 126:	6d 5f       	subi	r22, 0xFD	; 253
+ 128:	7f 4f       	sbci	r23, 0xFF	; 255
+ 12a:	90 e0       	ldi	r25, 0x00	; 0
+ 12c:	0e 94 71 01 	call	0x2e2	; 0x2e2 <__itoa_ncheck>
+	
+	while (j<5)					 // Transfers the temp string from itoa() to ADCtemp
+ 130:	89 81       	ldd	r24, Y+1	; 0x01
+ 132:	9a 81       	ldd	r25, Y+2	; 0x02
+ 134:	05 97       	sbiw	r24, 0x05	; 5
+ 136:	b8 f4       	brcc	.+46     	; 0x166 <__vector_21+0x86>
+	{
+		ADCtemp[j] = temp[j];
+ 138:	e9 81       	ldd	r30, Y+1	; 0x01
+ 13a:	fa 81       	ldd	r31, Y+2	; 0x02
+ 13c:	a9 81       	ldd	r26, Y+1	; 0x01
+ 13e:	ba 81       	ldd	r27, Y+2	; 0x02
+ 140:	83 e0       	ldi	r24, 0x03	; 3
+ 142:	90 e0       	ldi	r25, 0x00	; 0
+ 144:	8c 0f       	add	r24, r28
+ 146:	9d 1f       	adc	r25, r29
+ 148:	a8 0f       	add	r26, r24
+ 14a:	b9 1f       	adc	r27, r25
+ 14c:	8c 91       	ld	r24, X
+ 14e:	e2 55       	subi	r30, 0x52	; 82
+ 150:	fe 4f       	sbci	r31, 0xFE	; 254
+ 152:	80 83       	st	Z, r24
+		j++;
+ 154:	89 81       	ldd	r24, Y+1	; 0x01
+ 156:	9a 81       	ldd	r25, Y+2	; 0x02
+ 158:	01 96       	adiw	r24, 0x01	; 1
+ 15a:	9a 83       	std	Y+2, r25	; 0x02
+ 15c:	89 83       	std	Y+1, r24	; 0x01
+	
+	ADCvalue = (ADCH << 1);		 // Shifts the value left to one place
+	
+	itoa(ADCvalue, temp, 10);	 // Converts integers to string
+	
+	while (j<5)					 // Transfers the temp string from itoa() to ADCtemp
+ 15e:	89 81       	ldd	r24, Y+1	; 0x01
+ 160:	9a 81       	ldd	r25, Y+2	; 0x02
+ 162:	05 97       	sbiw	r24, 0x05	; 5
+ 164:	48 f3       	brcs	.-46     	; 0x138 <__vector_21+0x58>
+	{
+		ADCtemp[j] = temp[j];
+		j++;
+	}
+}
+ 166:	27 96       	adiw	r28, 0x07	; 7
+ 168:	0f b6       	in	r0, 0x3f	; 63
+ 16a:	f8 94       	cli
+ 16c:	de bf       	out	0x3e, r29	; 62
+ 16e:	0f be       	out	0x3f, r0	; 63
+ 170:	cd bf       	out	0x3d, r28	; 61
+ 172:	df 91       	pop	r29
+ 174:	cf 91       	pop	r28
+ 176:	ff 91       	pop	r31
+ 178:	ef 91       	pop	r30
+ 17a:	bf 91       	pop	r27
+ 17c:	af 91       	pop	r26
+ 17e:	9f 91       	pop	r25
+ 180:	8f 91       	pop	r24
+ 182:	7f 91       	pop	r23
+ 184:	6f 91       	pop	r22
+ 186:	5f 91       	pop	r21
+ 188:	4f 91       	pop	r20
+ 18a:	3f 91       	pop	r19
+ 18c:	2f 91       	pop	r18
+ 18e:	0f 90       	pop	r0
+ 190:	0f be       	out	0x3f, r0	; 63
+ 192:	0f 90       	pop	r0
+ 194:	1f 90       	pop	r1
+ 196:	18 95       	reti
+
+00000198 <signal_AT>:
+
+
+void signal_AT(volatile unsigned char c[]) {
+ 198:	cf 93       	push	r28
+ 19a:	df 93       	push	r29
+ 19c:	00 d0       	rcall	.+0      	; 0x19e <signal_AT+0x6>
+ 19e:	00 d0       	rcall	.+0      	; 0x1a0 <signal_AT+0x8>
+ 1a0:	cd b7       	in	r28, 0x3d	; 61
+ 1a2:	de b7       	in	r29, 0x3e	; 62
+ 1a4:	ac 01       	movw	r20, r24
+	volatile unsigned int i=0;
+ 1a6:	1a 82       	std	Y+2, r1	; 0x02
+ 1a8:	19 82       	std	Y+1, r1	; 0x01
+	volatile unsigned int j=0;
+ 1aa:	1c 82       	std	Y+4, r1	; 0x04
+ 1ac:	1b 82       	std	Y+3, r1	; 0x03
+	
+	j = 0;						 // Initializes counter
+ 1ae:	1c 82       	std	Y+4, r1	; 0x04
+ 1b0:	1b 82       	std	Y+3, r1	; 0x03
+	
+	while (c[j] != 0x00)		 // While not at end of string
+ 1b2:	eb 81       	ldd	r30, Y+3	; 0x03
+ 1b4:	fc 81       	ldd	r31, Y+4	; 0x04
+ 1b6:	e8 0f       	add	r30, r24
+ 1b8:	f9 1f       	adc	r31, r25
+ 1ba:	80 81       	ld	r24, Z
+ 1bc:	88 23       	and	r24, r24
+ 1be:	69 f0       	breq	.+26     	; 0x1da <signal_AT+0x42>
+	{
+		j++;
+ 1c0:	2b 81       	ldd	r18, Y+3	; 0x03
+ 1c2:	3c 81       	ldd	r19, Y+4	; 0x04
+ 1c4:	2f 5f       	subi	r18, 0xFF	; 255
+ 1c6:	3f 4f       	sbci	r19, 0xFF	; 255
+ 1c8:	3c 83       	std	Y+4, r19	; 0x04
+ 1ca:	2b 83       	std	Y+3, r18	; 0x03
+	volatile unsigned int i=0;
+	volatile unsigned int j=0;
+	
+	j = 0;						 // Initializes counter
+	
+	while (c[j] != 0x00)		 // While not at end of string
+ 1cc:	eb 81       	ldd	r30, Y+3	; 0x03
+ 1ce:	fc 81       	ldd	r31, Y+4	; 0x04
+ 1d0:	e4 0f       	add	r30, r20
+ 1d2:	f5 1f       	adc	r31, r21
+ 1d4:	80 81       	ld	r24, Z
+ 1d6:	81 11       	cpse	r24, r1
+ 1d8:	f3 cf       	rjmp	.-26     	; 0x1c0 <signal_AT+0x28>
+	{
+		j++;
+	}
+	
+	while (i<j)					 // If UDRE0 = 1, buffer can be written to
+ 1da:	29 81       	ldd	r18, Y+1	; 0x01
+ 1dc:	3a 81       	ldd	r19, Y+2	; 0x02
+ 1de:	8b 81       	ldd	r24, Y+3	; 0x03
+ 1e0:	9c 81       	ldd	r25, Y+4	; 0x04
+ 1e2:	28 17       	cp	r18, r24
+ 1e4:	39 07       	cpc	r19, r25
+ 1e6:	d8 f4       	brcc	.+54     	; 0x21e <signal_AT+0x86>
+	{
+		while(!(UCSR0A & (1 << UDRE0)));
+ 1e8:	e0 ec       	ldi	r30, 0xC0	; 192
+ 1ea:	f0 e0       	ldi	r31, 0x00	; 0
+		UDR0 = c[i];
+ 1ec:	66 ec       	ldi	r22, 0xC6	; 198
+ 1ee:	70 e0       	ldi	r23, 0x00	; 0
+		j++;
+	}
+	
+	while (i<j)					 // If UDRE0 = 1, buffer can be written to
+	{
+		while(!(UCSR0A & (1 << UDRE0)));
+ 1f0:	90 81       	ld	r25, Z
+ 1f2:	95 ff       	sbrs	r25, 5
+ 1f4:	fd cf       	rjmp	.-6      	; 0x1f0 <signal_AT+0x58>
+		UDR0 = c[i];
+ 1f6:	a9 81       	ldd	r26, Y+1	; 0x01
+ 1f8:	ba 81       	ldd	r27, Y+2	; 0x02
+ 1fa:	a4 0f       	add	r26, r20
+ 1fc:	b5 1f       	adc	r27, r21
+ 1fe:	8c 91       	ld	r24, X
+ 200:	db 01       	movw	r26, r22
+ 202:	8c 93       	st	X, r24
+		i++;
+ 204:	29 81       	ldd	r18, Y+1	; 0x01
+ 206:	3a 81       	ldd	r19, Y+2	; 0x02
+ 208:	2f 5f       	subi	r18, 0xFF	; 255
+ 20a:	3f 4f       	sbci	r19, 0xFF	; 255
+ 20c:	3a 83       	std	Y+2, r19	; 0x02
+ 20e:	29 83       	std	Y+1, r18	; 0x01
+	while (c[j] != 0x00)		 // While not at end of string
+	{
+		j++;
+	}
+	
+	while (i<j)					 // If UDRE0 = 1, buffer can be written to
+ 210:	29 81       	ldd	r18, Y+1	; 0x01
+ 212:	3a 81       	ldd	r19, Y+2	; 0x02
+ 214:	8b 81       	ldd	r24, Y+3	; 0x03
+ 216:	9c 81       	ldd	r25, Y+4	; 0x04
+ 218:	28 17       	cp	r18, r24
+ 21a:	39 07       	cpc	r19, r25
+ 21c:	48 f3       	brcs	.-46     	; 0x1f0 <signal_AT+0x58>
+	{
+		while(!(UCSR0A & (1 << UDRE0)));
+		UDR0 = c[i];
+		i++;
+	}
+}
+ 21e:	0f 90       	pop	r0
+ 220:	0f 90       	pop	r0
+ 222:	0f 90       	pop	r0
+ 224:	0f 90       	pop	r0
+ 226:	df 91       	pop	r29
+ 228:	cf 91       	pop	r28
+ 22a:	08 95       	ret
+
+0000022c <main>:
+void UART_init (void);
+void signal_AT (volatile unsigned char c[]);
+
+int main( void )
+{
+	ADC_init(); // Initializes ADC values
+ 22c:	0e 94 53 00 	call	0xa6	; 0xa6 <ADC_init>
+	UART_init(); // Initializes UART values
+ 230:	0e 94 5a 00 	call	0xb4	; 0xb4 <UART_init>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 234:	2f e3       	ldi	r18, 0x3F	; 63
+ 236:	8d e0       	ldi	r24, 0x0D	; 13
+ 238:	93 e0       	ldi	r25, 0x03	; 3
+ 23a:	21 50       	subi	r18, 0x01	; 1
+ 23c:	80 40       	sbci	r24, 0x00	; 0
+ 23e:	90 40       	sbci	r25, 0x00	; 0
+ 240:	e1 f7       	brne	.-8      	; 0x23a <main+0xe>
+ 242:	00 c0       	rjmp	.+0      	; 0x244 <main+0x18>
+ 244:	00 00       	nop
+	
+	// Calls functions to enable WiFi mode, connects to the specific WiFi, establishes single connection
+	_delay_ms(1000);
+	signal_AT(CWMODE);
+ 246:	8f e9       	ldi	r24, 0x9F	; 159
+ 248:	91 e0       	ldi	r25, 0x01	; 1
+ 24a:	0e 94 cc 00 	call	0x198	; 0x198 <signal_AT>
+ 24e:	2f e3       	ldi	r18, 0x3F	; 63
+ 250:	8d e0       	ldi	r24, 0x0D	; 13
+ 252:	93 e0       	ldi	r25, 0x03	; 3
+ 254:	21 50       	subi	r18, 0x01	; 1
+ 256:	80 40       	sbci	r24, 0x00	; 0
+ 258:	90 40       	sbci	r25, 0x00	; 0
+ 25a:	e1 f7       	brne	.-8      	; 0x254 <main+0x28>
+ 25c:	00 c0       	rjmp	.+0      	; 0x25e <main+0x32>
+ 25e:	00 00       	nop
+	
+	_delay_ms(1000);
+	signal_AT(WIFI);
+ 260:	85 e7       	ldi	r24, 0x75	; 117
+ 262:	91 e0       	ldi	r25, 0x01	; 1
+ 264:	0e 94 cc 00 	call	0x198	; 0x198 <signal_AT>
+ 268:	2f e7       	ldi	r18, 0x7F	; 127
+ 26a:	8a e1       	ldi	r24, 0x1A	; 26
+ 26c:	96 e0       	ldi	r25, 0x06	; 6
+ 26e:	21 50       	subi	r18, 0x01	; 1
+ 270:	80 40       	sbci	r24, 0x00	; 0
+ 272:	90 40       	sbci	r25, 0x00	; 0
+ 274:	e1 f7       	brne	.-8      	; 0x26e <main+0x42>
+ 276:	00 c0       	rjmp	.+0      	; 0x278 <main+0x4c>
+ 278:	00 00       	nop
+	
+	_delay_ms(2000);
+	signal_AT(ENABLE);
+ 27a:	87 e6       	ldi	r24, 0x67	; 103
+ 27c:	91 e0       	ldi	r25, 0x01	; 1
+ 27e:	0e 94 cc 00 	call	0x198	; 0x198 <signal_AT>
+ 282:	2f e3       	ldi	r18, 0x3F	; 63
+ 284:	8d e0       	ldi	r24, 0x0D	; 13
+ 286:	93 e0       	ldi	r25, 0x03	; 3
+ 288:	21 50       	subi	r18, 0x01	; 1
+ 28a:	80 40       	sbci	r24, 0x00	; 0
+ 28c:	90 40       	sbci	r25, 0x00	; 0
+ 28e:	e1 f7       	brne	.-8      	; 0x288 <main+0x5c>
+ 290:	00 c0       	rjmp	.+0      	; 0x292 <main+0x66>
+ 292:	00 00       	nop
+	while(1) // Constantly send values through the cloud until device turns off
+	{
+
+		// Calls functions to connect to thingspeak, sets length of data to be sent, sends the data values to cloud
+		_delay_ms(1000);
+		signal_AT(CIPSTART); // Connects to thingspeak
+ 294:	8e e3       	ldi	r24, 0x3E	; 62
+ 296:	91 e0       	ldi	r25, 0x01	; 1
+ 298:	0e 94 cc 00 	call	0x198	; 0x198 <signal_AT>
+ 29c:	2f e3       	ldi	r18, 0x3F	; 63
+ 29e:	8d e0       	ldi	r24, 0x0D	; 13
+ 2a0:	93 e0       	ldi	r25, 0x03	; 3
+ 2a2:	21 50       	subi	r18, 0x01	; 1
+ 2a4:	80 40       	sbci	r24, 0x00	; 0
+ 2a6:	90 40       	sbci	r25, 0x00	; 0
+ 2a8:	e1 f7       	brne	.-8      	; 0x2a2 <main+0x76>
+ 2aa:	00 c0       	rjmp	.+0      	; 0x2ac <main+0x80>
+ 2ac:	00 00       	nop
+		
+		_delay_ms(1000);
+		signal_AT(CIPSEND); // Sets length of data
+ 2ae:	8e e2       	ldi	r24, 0x2E	; 46
+ 2b0:	91 e0       	ldi	r25, 0x01	; 1
+ 2b2:	0e 94 cc 00 	call	0x198	; 0x198 <signal_AT>
+ 2b6:	2f e3       	ldi	r18, 0x3F	; 63
+ 2b8:	8d e0       	ldi	r24, 0x0D	; 13
+ 2ba:	93 e0       	ldi	r25, 0x03	; 3
+ 2bc:	21 50       	subi	r18, 0x01	; 1
+ 2be:	80 40       	sbci	r24, 0x00	; 0
+ 2c0:	90 40       	sbci	r25, 0x00	; 0
+ 2c2:	e1 f7       	brne	.-8      	; 0x2bc <main+0x90>
+ 2c4:	00 c0       	rjmp	.+0      	; 0x2c6 <main+0x9a>
+ 2c6:	00 00       	nop
+
+		_delay_ms(1000);
+		signal_AT(SEND_DATA);
+ 2c8:	85 e0       	ldi	r24, 0x05	; 5
+ 2ca:	91 e0       	ldi	r25, 0x01	; 1
+ 2cc:	0e 94 cc 00 	call	0x198	; 0x198 <signal_AT>
+		signal_AT(ADCtemp); // Sends data
+ 2d0:	8e ea       	ldi	r24, 0xAE	; 174
+ 2d2:	91 e0       	ldi	r25, 0x01	; 1
+ 2d4:	0e 94 cc 00 	call	0x198	; 0x198 <signal_AT>
+		
+		signal_AT(PAUSE); // Pauses to load data
+ 2d8:	80 e0       	ldi	r24, 0x00	; 0
+ 2da:	91 e0       	ldi	r25, 0x01	; 1
+ 2dc:	0e 94 cc 00 	call	0x198	; 0x198 <signal_AT>
+ 2e0:	d0 cf       	rjmp	.-96     	; 0x282 <main+0x56>
+
+000002e2 <__itoa_ncheck>:
+ 2e2:	bb 27       	eor	r27, r27
+ 2e4:	4a 30       	cpi	r20, 0x0A	; 10
+ 2e6:	31 f4       	brne	.+12     	; 0x2f4 <__itoa_ncheck+0x12>
+ 2e8:	99 23       	and	r25, r25
+ 2ea:	22 f4       	brpl	.+8      	; 0x2f4 <__itoa_ncheck+0x12>
+ 2ec:	bd e2       	ldi	r27, 0x2D	; 45
+ 2ee:	90 95       	com	r25
+ 2f0:	81 95       	neg	r24
+ 2f2:	9f 4f       	sbci	r25, 0xFF	; 255
+ 2f4:	0c 94 7d 01 	jmp	0x2fa	; 0x2fa <__utoa_common>
+
+000002f8 <__utoa_ncheck>:
+ 2f8:	bb 27       	eor	r27, r27
+
+000002fa <__utoa_common>:
+ 2fa:	fb 01       	movw	r30, r22
+ 2fc:	55 27       	eor	r21, r21
+ 2fe:	aa 27       	eor	r26, r26
+ 300:	88 0f       	add	r24, r24
+ 302:	99 1f       	adc	r25, r25
+ 304:	aa 1f       	adc	r26, r26
+ 306:	a4 17       	cp	r26, r20
+ 308:	10 f0       	brcs	.+4      	; 0x30e <__utoa_common+0x14>
+ 30a:	a4 1b       	sub	r26, r20
+ 30c:	83 95       	inc	r24
+ 30e:	50 51       	subi	r21, 0x10	; 16
+ 310:	b9 f7       	brne	.-18     	; 0x300 <__utoa_common+0x6>
+ 312:	a0 5d       	subi	r26, 0xD0	; 208
+ 314:	aa 33       	cpi	r26, 0x3A	; 58
+ 316:	08 f0       	brcs	.+2      	; 0x31a <__utoa_common+0x20>
+ 318:	a9 5d       	subi	r26, 0xD9	; 217
+ 31a:	a1 93       	st	Z+, r26
+ 31c:	00 97       	sbiw	r24, 0x00	; 0
+ 31e:	79 f7       	brne	.-34     	; 0x2fe <__utoa_common+0x4>
+ 320:	b1 11       	cpse	r27, r1
+ 322:	b1 93       	st	Z+, r27
+ 324:	11 92       	st	Z+, r1
+ 326:	cb 01       	movw	r24, r22
+ 328:	0c 94 96 01 	jmp	0x32c	; 0x32c <strrev>
+
+0000032c <strrev>:
+ 32c:	dc 01       	movw	r26, r24
+ 32e:	fc 01       	movw	r30, r24
+ 330:	67 2f       	mov	r22, r23
+ 332:	71 91       	ld	r23, Z+
+ 334:	77 23       	and	r23, r23
+ 336:	e1 f7       	brne	.-8      	; 0x330 <strrev+0x4>
+ 338:	32 97       	sbiw	r30, 0x02	; 2
+ 33a:	04 c0       	rjmp	.+8      	; 0x344 <strrev+0x18>
+ 33c:	7c 91       	ld	r23, X
+ 33e:	6d 93       	st	X+, r22
+ 340:	70 83       	st	Z, r23
+ 342:	62 91       	ld	r22, -Z
+ 344:	ae 17       	cp	r26, r30
+ 346:	bf 07       	cpc	r27, r31
+ 348:	c8 f3       	brcs	.-14     	; 0x33c <strrev+0x10>
+ 34a:	08 95       	ret
+
+0000034c <_exit>:
+ 34c:	f8 94       	cli
+
+0000034e <__stop_program>:
+ 34e:	ff cf       	rjmp	.-2      	; 0x34e <__stop_program>
